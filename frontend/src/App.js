@@ -122,7 +122,7 @@
      this.toggle();
      if (item.id) {
        axios
-         .put(`http://localhost:8000/api/todos/${item.id}/`, item)
+         .put(`/api/todos/${item.id}/`, item)
          .then(res => this.refreshList());
        return;
      }
@@ -131,10 +131,10 @@
        .then(res => this.refreshList());
    };
    handleDelete = item => {
-     axios
-       .delete(`http://localhost:8000/api/todos/${item.id}`)
-       .then(res => this.refreshList());
-   };
+    axios
+      .delete(`/api/todos/${item.id}`, item)
+      .then(res => this.refreshList());
+  };
    createItem = () => {
      const item = { title: "", description: "", completed: false };
      this.setState({ activeItem: item, modal: !this.state.modal });
